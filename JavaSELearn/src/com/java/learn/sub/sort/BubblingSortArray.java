@@ -16,4 +16,23 @@ public class BubblingSortArray {
 		}
 		return intArray;
 	}
+
+	/**
+	 * @param cs
+	 */
+	public static char[] sortCharArray(char[] cs) {
+
+		for (int i = 0; i < cs.length - 1; i++) {
+			for (int j = 0; j < cs.length - 1 - i; j++) {
+				char temp;
+				if (cs[j] > cs[j + 1]) {
+					temp = cs[j];
+					cs[j] = cs[j + 1];
+					cs[j + 1] = temp;
+				}
+			}
+		}
+		return cs;
+		
+	}
 }
