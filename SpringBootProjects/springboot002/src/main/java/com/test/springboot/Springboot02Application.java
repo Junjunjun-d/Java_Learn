@@ -1,0 +1,16 @@
+package com.test.springboot;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Springboot02Application {
+
+
+    public static void main(String[] args) {
+
+        SpringApplication.run(Springboot02Application.class, args);
+    }
+
+}

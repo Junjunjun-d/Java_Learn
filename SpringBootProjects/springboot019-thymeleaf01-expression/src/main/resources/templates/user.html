@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>展示用户信息</title>
+</head>
+<body>
+<!--h1-h6 标题大小递减-->
+<h1>展示用户信息1(文本表达式即标准变量表达式)</h1>
+用户编号：<span th:text="${user.id}"></span><br/>
+用户姓名：<span th:text="${user.name}"></span><br/>
+用户手机号：<span th:text="${user.phone}"></span><br/>
+用户地址：<span th:text="${user.address}"></span><br/>
+
+<h2>展示用户信息2(*号表达式即选择变量表达式，仅在div范围内有效)</h2>
+<div th:object="${user}">
+    用户编号：<span th:text="*{id}"></span><br/>
+    用户姓名：<span th:text="*{name}"></span><br/>
+    用户手机号：<span th:text="*{phone}"></span><br/>
+    用户地址：<span th:text="*{address}"></span><br/>
+</div>
+
+<h3>展示用户信息3(标准变量表达式和选择变量表达式混用)</h3>
+用户编号：<span th:text="*{user.id}"></span><br/>
+用户姓名：<span th:text="*{user.name}"></span><br/>
+用户手机号：<span th:text="*{user.phone}"></span><br/>
+用户地址：<span th:text="*{user.address}"></span><br/>
+
+</body>
+</html>
