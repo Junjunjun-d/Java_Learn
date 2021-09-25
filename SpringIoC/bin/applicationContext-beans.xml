@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+           default-lazy-init="true">
+<!-- test2 first spring-->
+<bean id = "userDao4MySqlImpl" class = "com.spring.test2.dao.UserDao4MySqlImpl" />
+<bean id = "userDao4Oracle" class = "com.spring.test2.dao.UserDao4OracleImpl" />
+<bean id = "userManager" class = "com.spring.test2.manager.UserManagerImpl"> 
+	<!-- 使用构造函数注入依赖
+	<constructor-arg  ref = "userDao4Oracle"/> 
+	-->
+
+	<!-- 使用setter 这种方式要求必须要有无参的构造函数（当有有参数的构造方法时，需要声明一个无参的构造方法）-->
+	<property name="userDao" ref = "userDao4MySqlImpl"/>
+</bean>
+
+<!-- test3 injection -->
+<bean id = "bean1" class ="com.spring.test3.injection.Bean1">
+	<property name="strValue" value="Hello_Spring"/>
+	<property name="intValue" value="123"/>
+	<property name="listValue">
+		<list>
+			<value>list1</value>
+			<value>list2</value>
+		</list>
+	</property>
+	<property name="setValue">
+		<set>
+			<value>set1</value>
+			<value>set2</value>		
+		</set>
+	</property>
+	<property name="arrayValue">
+		<list>
+			<value>array1</value>
+			<value>array2</value>
+		</list>
+	</property>
+	<property name="mapValue">
+		<map>
+			<entry key = "k1" value="v1"/>
+			<entry key = "k2" value="v2"/>
+		</map>
+	</property>
+	<property name="dateValue" value="2021-05-29"/> 
+</bean>
+
+<!-- test3 减少配置量：抽象公共的配置-->
+<bean id = "bean2" class="com.spring.test3.injection.Bean2">
+	<property name="bean3" ref="bean3"/>
+	<property name="bean4" ref="bean4"/>
+	<property name="bean5">
+		<ref bean="bean5"/>
+	</property>
+</bean>
+<!--  含有公共属性，提取出来在applicationContext-common.xml配置以减少配置量
+<bean id = "bean3" class="com.spring.test3.injection.Bean3">
+	<property name="id" value="100"/>
+	<property name="name" value="dsadas"/>
+	<property name="sex" value="male"/>
+</bean>
+<bean id = "bean4" class="com.spring.test3.injection.Bean4">
+	<property name="id" value="100"/>
+	<property name="name" value="dsadas"/>
+	<property name="sex" value="male"/>
+	<property name="age"> 
+		<value>25</value>
+	</property>
+</bean> 
+-->
+<bean id = "bean5" class="com.spring.test3.injection.Bean5">
+	<property name="password" value="6161616351"/>
+</bean>
+</beans>
