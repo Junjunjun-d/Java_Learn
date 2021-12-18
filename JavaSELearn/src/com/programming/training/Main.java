@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// section2Number();// 1 BC120 二段数 此方法输入的数不能超过四位 否则耗时太久
+		// section2Number();// 1 BC120 二段数 此方法输入的数不能超过四位 否则耗时太久,java暂时还没想到更好的
 		// printBirthday();//2 BC14 出生日期输入输出
 		// exchangeOfOutput();// 3 BC15 按照格式输入并交换输出
 		// printK();//4 BC64 K形图案
@@ -25,8 +25,72 @@ public class Main {
 		// powersOf2(10);// 11 2的多次幂计算 使用左移位运算
 		// outputScore();//12 BC24 总成绩和平均分计算
 		// getAvgScore();// 13 BC33 计算平均成绩
+		// calTriangle();// 14 BC26 计算三角形的周长和面积
+		//calSphereVolume(); // 15 BC27 计算球体的体积
+		upperToLower(); // 16 BC28 大小写转换
 	}
 
+	/*
+	 * 16 BC28 计算球体的体积
+	 * 
+	 */
+	public static void upperToLower() {
+		Scanner sr = new Scanner(System.in);
+		while (sr.hasNext()) {
+			String input = sr.nextLine();	
+			System.out.println(input.toLowerCase());
+		}
+		
+		sr.close();
+	}
+	
+	/*
+	 * 15 BC27 计算球体的体积
+	 * 
+    	V = 4/3*πr3，其中 π = 3.1415926
+	 */
+	public static void calSphereVolume() {
+		Scanner sr = new Scanner(System.in);
+		while (sr.hasNext()) {
+			float r = sr.nextFloat();
+			double volume = (4*3.1415926*r*r*r)/3;
+			
+			DecimalFormat df = new DecimalFormat("#.000");
+			System.out.println(df.format(volume));
+		}
+		
+		sr.close();
+	}
+	 
+	/*
+	 * 14 BC26 计算三角形的周长和面积
+	 * 
+    	海伦公式求面积：
+    	p = (a + b + c)/2
+    	s = sqrt(p*(p-a)*(p-b)*(p-c))
+	 */
+	public static void calTriangle() {
+		Scanner sr = new Scanner(System.in);
+		while (sr.hasNext()) {
+			String in = sr.nextLine();
+			String[] arrs = in.split(" ");
+			double[] dou = new double[3];
+
+			double circumference = 0.0;
+			for (int i = 0; i < arrs.length; i++) {
+				circumference += Double.parseDouble(arrs[i]);;
+				dou[i] = Double.parseDouble(arrs[i]);
+			}
+			double p = circumference / 2;
+			double area = Math.sqrt(p*(p-dou[0])*(p-dou[1])*(p-dou[2]));
+
+			DecimalFormat df = new DecimalFormat("###.00");
+			System.out.println("circumference= "+df.format(circumference)+" area= "+df.format(area));
+		}
+		
+		sr.close();
+	}
+	
 	/*
 	 * 13 BC33 计算平均成绩 保留一位小数 75 80 43 67 96 72.2
 	 */
@@ -45,6 +109,8 @@ public class Main {
 			DecimalFormat df = new DecimalFormat("###.0");
 			System.out.println(df.format(avg));
 		}
+		
+		sr.close();
 	}
 
 	/*
@@ -70,6 +136,7 @@ public class Main {
 			System.out.println(total + " " + avg);
 
 		}
+		sr.close();
 	}
 
 	/*
@@ -103,6 +170,7 @@ public class Main {
 			System.out.println(a);
 
 		}
+		sr.close();
 	}
 
 	/*
@@ -149,6 +217,7 @@ public class Main {
 
 			System.out.print(sum);
 		}
+		sr.close();
 	}
 
 	/*
@@ -162,6 +231,7 @@ public class Main {
 			StringBuilder sb = new StringBuilder(s);
 			System.out.println(sb.reverse());
 		}
+		sr.close();
 	}
 
 	/*
@@ -182,6 +252,7 @@ public class Main {
 			System.out.print(a / b + " " + a % b);
 
 		}
+		sr.close();
 
 	}
 
@@ -202,6 +273,7 @@ public class Main {
 			System.out.println(temp);
 
 		}
+		sr.close();
 	}
 
 	/*
@@ -233,6 +305,7 @@ public class Main {
 			}
 			System.out.println();
 		}
+		sr.close();
 
 	}
 
@@ -256,6 +329,7 @@ public class Main {
 			System.out.println(s1 + n2 + "," + s2 + n1);
 
 		}
+		sr.close();
 	}
 
 	/*
@@ -279,7 +353,7 @@ public class Main {
 			System.out.println("day = " + day);
 
 		}
-
+		sr.close();
 	}
 
 	/*
@@ -317,7 +391,7 @@ public class Main {
 			boolean flag = false;
 			int t = 2;
 			String s = "";
-			while (!flag) {
+			while (!flag) { 
 				s = (long) input * t + "";
 				char first = s.charAt(0);
 				int count = 0;
@@ -339,6 +413,7 @@ public class Main {
 			}
 			System.out.println(input + " : " + (long) input * t);
 		}
+		sr.close();
 	}
 
 }

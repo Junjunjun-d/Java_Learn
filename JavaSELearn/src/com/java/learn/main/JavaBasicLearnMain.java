@@ -2,6 +2,7 @@ package com.java.learn.main;
 
 import java.io.File;
 
+import com.java.learn.sub.exercise.JinZiTa;
 import com.java.learn.sub.exercise.Thread.FileCopyer;
 
 /**
@@ -18,9 +19,9 @@ public class JavaBasicLearnMain {
 	public static void main(String[] args) {
 
 		// 多线程拷贝文件
-		FileCopyer.start(new File(
-				"D:\\常用软件\\工作软件20150916\\oracle-xe-11.2.0-1.0.x86_64.rpm.zip"),
-				"D:\\test", 10);
+//		FileCopyer.start(new File(
+//				"D:\\常用软件\\工作软件20150916\\oracle-xe-11.2.0-1.0.x86_64.rpm.zip"),
+//				"D:\\test", 10);
 
 		// 30 线程 Thread: 实现接口Runnable
 		// RunnableMethods.test();
@@ -107,7 +108,7 @@ public class JavaBasicLearnMain {
 		// System.out.println(Recursion.diGui(5000));
 
 		// 8 打印金字塔
-		// JinZiTa.printJinZiTa(20);
+		 JinZiTa.printJinZiTa(20);
 
 		// 7 打印出所有的水仙花数
 		// NarcissusNumber.printNarcissusNumber();
